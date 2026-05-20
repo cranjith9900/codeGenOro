@@ -4,7 +4,9 @@ package com.oro.codegen.controller;
 import com.oro.codegen.dto.subscription.*;
 import com.oro.codegen.service.PlanService;
 import com.oro.codegen.service.SubscriptionService;
+import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
+import lombok.experimental.FieldDefaults;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -15,10 +17,11 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
+@FieldDefaults(makeFinal=true,level = AccessLevel.PRIVATE)
 public class BillingController {
 
-    private  PlanService planService;
-    private  SubscriptionService subscriptionService;
+      PlanService planService;
+      SubscriptionService subscriptionService;
 
     @GetMapping("/api/plans")
     public ResponseEntity<List<PlanResponse>> getAllPlans() {
